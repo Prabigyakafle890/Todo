@@ -1,0 +1,12 @@
+node_modules
+yarn.lock
+build
+yarn-error.log
+package-lock.json
+tsconfig.node.json
+tailwind.config.json
+pnpm-lock.yaml
+next.config.mjs
+.next
+.vscode
+index.css

@@ -1,0 +1,17 @@
+set -e
+
+echo "Running pre-commit checks..."
+
+echo "TypeScript check..." 
+npm run check:types
+
+echo "Prettier check..." 
+npm run format:check
+
+echo "ESLint check..." 
+npm run lint
+
+echo " Build check..." 
+npm run build
+
+echo "All checks passed. You can commit safely."
