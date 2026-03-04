@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import type { todoItem } from "./types";
+import List from "./components/List";
 function App() {
   const [todos, setTodos] = useState<todoItem[]>([]);
 
@@ -13,6 +14,7 @@ function App() {
     <>
       <Header />
       <Form addTodo={addTodo} />
+      <List todos={todos} />
     </>
   );
 }
