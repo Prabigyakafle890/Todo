@@ -8,9 +8,7 @@ export default function DisplayList({ todos }: { todos: todoItem[] }) {
   return (
     <>
       {todos.length > 0 ? (
-        todos.map((todo) => (
-          <Item key={todo.id} todo={todo} />
-        ))
+        todos.map((todo) => <Item key={todo.id} todo={todo} />)
       ) : (
         <p>Nothing to do yet !</p>
       )}
