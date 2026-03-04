@@ -5,13 +5,9 @@ function Item({ todo }: { todo: todoItem }) {
 }
 
 export default function DisplayList({ todos }: { todos: todoItem[] }) {
-  return (
-    <>
-      {todos.length > 0 ? (
-        todos.map((todo) => <Item key={todo.id} todo={todo} />)
-      ) : (
-        <p>Nothing to do yet !</p>
-      )}
-    </>
-  );
+  if (todos.length === 0) {
+    return <p>Nothing to do yet !</p>;
+  } else {
+    return todos.map((todo) => <Item key={todo.id} todo={todo} />);
+  }
 }
