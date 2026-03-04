@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import type { todoItem } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 import DisplayTime from "./components/DisplayTime";
+import DisplayList from "./components/DisplayList";
 
 function getRand() {
   return new Date().getTime().toString() + Math.floor(Math.random() * 1000000);
@@ -24,6 +25,7 @@ function App() {
       <Header />
       <DisplayTime />
       <Form addTodo={addTodo} />
+      <DisplayList todos={todos} />
     </>
   );
 }
