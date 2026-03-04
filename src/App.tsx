@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import type { todoItem } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
+import DisplayTime from "./components/DisplayTime";
 
 function getRand() {
   return new Date().getTime().toString() + Math.floor(Math.random() * 1000000);
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <Header />
+      <DisplayTime />
       <Form addTodo={addTodo} />
     </>
   );
