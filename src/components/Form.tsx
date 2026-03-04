@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-export default function Form({
-  addTodo,
-}: {
+type FormProps = {
   addTodo: (title: string) => void;
-}) {
+};
+
+export default function Form({ addTodo }: FormProps) {
   const [inputValue, setInputValue] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputValue.trim()) {
       addTodo(inputValue.trim());
