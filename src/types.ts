@@ -1,4 +1,4 @@
-export type todoItem = {
+export type TodoItem = {
   id: string;
   title: string;
 };
