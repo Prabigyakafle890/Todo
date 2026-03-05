@@ -13,26 +13,25 @@ function App() {
   const [todos, setTodos] = useState<TodoItem[]>(() => getTodos());
 
   const addTodo = (title: string) => {
-    setTodos([...todos, { id: getRand(), title, completed: false,  addedAt: new Date() }]);
+    setTodos([
+      ...todos,
+      { id: getRand(), title, completed: false, addedAt: new Date() },
+    ]);
   };
 
   const toggleTodo = (id: string) => {
-   const updatedTodos = todos.map((todo) => {
-    if(todo.id === id){
-      todo.completed = !todo.completed;  
-    }
-     return todo;
-   }
-  )
-   setTodos(updatedTodos)
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
   };
-
 
   const deleteTodo = (id: string) => {
     setTodos((prevTodos) => prevTodos.filter((t) => t.id !== id));
   };
-
-
 
   useEffect(() => {
     saveTodos(todos);
