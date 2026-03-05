@@ -18,6 +18,7 @@ function Item({
       />
       {todo.title}
       <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      <span>{todo.addedAt.toLocaleString()}</span>
     </li>
   );
 }
