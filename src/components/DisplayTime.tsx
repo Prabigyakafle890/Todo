@@ -10,8 +10,10 @@ export default function DisplayTime() {
   }, []);
 
   return (
-    <div>
-      <h2>{time.toLocaleTimeString()}</h2>
+    <div className="text-center mb-6">
+      <h2 className="text-lg text-slate-600 font-medium">
+        {time.toLocaleTimeString()}
+      </h2>
     </div>
   );
 }

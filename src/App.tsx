@@ -38,16 +38,18 @@ function App() {
   }, [todos]);
 
   return (
-    <>
-      <Header />
-      <DisplayTime />
-      <Form addTodo={addTodo} />
-      <DisplayList
-        todos={todos}
-        toggleTodo={toggleTodo}
-        deleteTodo={deleteTodo}
-      />
-    </>
+    <div className="min-h-screen bg-slate-100 flex justify-center py-10">
+      <div className="w-full max-w-xl px-4">
+        <Header />
+        <DisplayTime />
+        <Form addTodo={addTodo} />
+        <DisplayList
+          todos={todos}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+        />
+      </div>
+    </div>
   );
 }
 
