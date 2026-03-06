@@ -6,7 +6,16 @@ export function saveTodos(todos: TodoItem[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
 }
 
-export function getTodos() {
+export function getTodos(): TodoItem[] {
   const stored = localStorage.getItem(STORAGE_KEY);
-  return stored ? JSON.parse(stored) : [];
+
+  if (!stored) {
+    return [];
+  }
+  return JSON.parse(stored, (key, value) => {
+    if (key === "addedAt" || key === "deadline") {
+      return new Date(value);
+    }
+    return value;
+  });
 }

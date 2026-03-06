@@ -31,6 +31,11 @@ function Item({
           <p className="text-sm text-slate-500">
             {todo.addedAt.toLocaleString()}
           </p>
+
+          <p className="text-sm text-slate-500">
+            Due:{" "}
+            {todo.deadline ? todo.deadline.toLocaleString() : "No deadline"}
+          </p>
         </div>
       </div>
 

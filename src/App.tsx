@@ -12,10 +12,16 @@ function getRand() {
 function App() {
   const [todos, setTodos] = useState<TodoItem[]>(() => getTodos());
 
-  const addTodo = (title: string) => {
+  const addTodo = (title: string, deadline: Date) => {
     setTodos([
       ...todos,
-      { id: getRand(), title, completed: false, addedAt: new Date() },
+      {
+        id: getRand(),
+        title,
+        completed: false,
+        addedAt: new Date(),
+        deadline,
+      },
     ]);
   };
 
