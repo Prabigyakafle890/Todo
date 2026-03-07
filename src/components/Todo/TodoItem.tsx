@@ -1,4 +1,4 @@
-import type { TodoItem, ToggleProps, DeleteProps } from "../types";
+import type { TodoItem, ToggleProps, DeleteProps } from "../../types";
 import { Button } from "../ui/Button";
 
 export default function TodoItems({
