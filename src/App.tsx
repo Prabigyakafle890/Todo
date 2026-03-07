@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
-import Form from "./components/Form";
+import AddTodoForm from "./components/AddTodoForm";
 import type { TodoItem } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 import DisplayTime from "./components/DisplayTime";
@@ -48,7 +48,7 @@ function App() {
       <div className="w-full max-w-xl px-4">
         <Header />
         <DisplayTime />
-        <Form addTodo={addTodo} />
+        <AddTodoForm addTodo={addTodo} />
         <DisplayList
           todos={todos}
           toggleTodo={toggleTodo}
