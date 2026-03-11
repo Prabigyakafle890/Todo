@@ -1,15 +1,39 @@
-import type { TodoItem, ToggleProps, DeleteProps } from "../../types";
+import type {
+  TodoItem,
+  ToggleProps,
+  DeleteProps,
+  EditProps,
+} from "../../types";
 import { Button } from "../ui/Button";
+import { useState } from "react";
+import EditTodo from "./EditTodo";
 
 export default function TodoItems({
   todo,
   toggleTodo,
   deleteTodo,
+  editTodo,
 }: {
   todo: TodoItem;
   toggleTodo: ToggleProps;
   deleteTodo: DeleteProps;
+  editTodo: EditProps;
 }) {
+  const [isEditing, setIsEditing] = useState(false);
+
+  if (isEditing) {
+    return (
+      <EditTodo
+        todo={todo}
+        onSave={(title: string) => {
+          editTodo(todo.id, title);
+          setIsEditing(false);
+        }}
+        onCancel={() => setIsEditing(false)}
+      />
+    );
+  }
+
   return (
     <li className="bg-white rounded-xl shadow p-4 flex justify-between items-center">
       <div className="flex items-start gap-3">
@@ -39,6 +63,13 @@ export default function TodoItems({
           </p>
         </div>
       </div>
+
+      <Button
+        onClick={() => setIsEditing(true)}
+        className="text-green-500 hover:text-green-700"
+      >
+        Edit
+      </Button>
 
       <Button
         onClick={() => deleteTodo(todo.id)}

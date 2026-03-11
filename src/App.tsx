@@ -40,6 +40,16 @@ function App() {
     setTodos((prevTodos) => prevTodos.filter((t) => t.id !== id));
   };
 
+  const editTodo = (id: string, title: string) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, title };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+
   useEffect(() => {
     saveTodos(todos);
   }, [todos]);
@@ -55,6 +65,7 @@ function App() {
           todos={todos}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
+          editTodo={editTodo}
         />
       </div>
     </div>

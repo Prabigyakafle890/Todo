@@ -7,3 +7,4 @@ export type TodoItem = {
 };
 export type ToggleProps = (id: string) => void;
 export type DeleteProps = (id: string) => void;
+export type EditProps = (id: string, title: string) => void;

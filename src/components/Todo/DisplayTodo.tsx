@@ -1,14 +1,21 @@
-import type { TodoItem, ToggleProps, DeleteProps } from "../../types";
+import type {
+  TodoItem,
+  ToggleProps,
+  DeleteProps,
+  EditProps,
+} from "../../types";
 import TodoItems from "./TodoItem";
 
 export default function DisplayTodo({
   todos,
   toggleTodo,
   deleteTodo,
+  editTodo,
 }: {
   todos: TodoItem[];
   toggleTodo: ToggleProps;
   deleteTodo: DeleteProps;
+  editTodo: EditProps;
 }) {
   if (todos.length === 0) {
     return (
@@ -24,6 +31,7 @@ export default function DisplayTodo({
           todo={todo}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
+          editTodo={editTodo}
         />
       ))}
     </ul>
