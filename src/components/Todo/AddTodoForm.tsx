@@ -34,7 +34,7 @@ export default function AddTodoForm({ addTodo }: FormProps) {
         onChange={(e) => setDeadlineValue(e.target.value)}
       />
 
-      <Button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+      <Button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 space-y-6">
         Add
       </Button>
     </form>

@@ -1,7 +1,7 @@
 import type { TodoItem, ToggleProps, DeleteProps } from "../../types";
 import TodoItems from "./TodoItem";
 
-export default function DisplayList({
+export default function DisplayTodo({
   todos,
   toggleTodo,
   deleteTodo,

@@ -4,7 +4,8 @@ import AddTodoForm from "./components/Todo/AddTodoForm";
 import type { TodoItem } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 import DisplayTime from "./components/Todo/DisplayTime";
-import DisplayList from "./components/Todo/DisplayTodo";
+import DisplayTodo from "./components/Todo/DisplayTodo";
+import CompletedTodos from "./components/Todo/DoneTodos";
 
 function getRand() {
   return new Date().getTime().toString() + Math.floor(Math.random() * 1000000);
@@ -48,8 +49,9 @@ function App() {
       <div className="w-full max-w-xl px-4">
         <Header />
         <DisplayTime />
+        <CompletedTodos todos={todos} />
         <AddTodoForm addTodo={addTodo} />
-        <DisplayList
+        <DisplayTodo
           todos={todos}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
