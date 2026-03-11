@@ -40,10 +40,10 @@ function App() {
     setTodos((prevTodos) => prevTodos.filter((t) => t.id !== id));
   };
 
-  const editTodo = (id: string, title: string) => {
+  const editTodo = (id: string, title: string, deadline: Date) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        return { ...todo, title };
+        return { ...todo, title, deadline };
       }
       return todo;
     });

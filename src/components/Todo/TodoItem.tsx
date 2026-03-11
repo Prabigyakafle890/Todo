@@ -25,8 +25,8 @@ export default function TodoItems({
     return (
       <EditTodo
         todo={todo}
-        onSave={(title: string) => {
-          editTodo(todo.id, title);
+        onSave={(title: string, deadline: Date) => {
+          editTodo(todo.id, title, deadline);
           setIsEditing(false);
         }}
         onCancel={() => setIsEditing(false)}
