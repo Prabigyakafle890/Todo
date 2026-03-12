@@ -1,4 +1,4 @@
-export type TodoItem = {
+export type TodoTask = {
   id: string;
   title: string;
   completed: boolean;

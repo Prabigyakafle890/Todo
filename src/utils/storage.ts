@@ -1,12 +1,12 @@
-import type { TodoItem } from "../types";
+import type { TodoTask } from "../types";
 
 const STORAGE_KEY = "todos";
 
-export function saveTodos(todos: TodoItem[]) {
+export function saveTodos(todos: TodoTask[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
 }
 
-export function getTodos(): TodoItem[] {
+export function getTodos(): TodoTask[] {
   const stored = localStorage.getItem(STORAGE_KEY);
 
   if (!stored) {

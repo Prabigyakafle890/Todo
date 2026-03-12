@@ -26,25 +26,24 @@ export default function DisplayTodos({
   const completed = todos.filter((todo) => todo.completed);
   const completed_todos = completed.length;
 
-
   return (
     <div>
-        <div className="text-center mb-6">
-          <h2 className="text-lg text-slate-600 font-medium">
-            {completed_todos}/ {total_todos} completed
-          </h2>
-        </div>
-    <ul className="space-y-3">
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          toggleTodo={toggleTodo}
-          deleteTodo={deleteTodo}
-          editTodo={editTodo}
-        />
-      ))}
-    </ul>
+      <div className="text-center mb-6">
+        <h2 className="text-lg text-slate-600 font-medium">
+          {completed_todos}/ {total_todos} completed
+        </h2>
+      </div>
+      <ul className="space-y-3">
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
+            editTodo={editTodo}
+          />
+        ))}
+      </ul>
     </div>
   );
 }
