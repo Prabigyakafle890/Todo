@@ -16,6 +16,8 @@ export default function AddTodoForm({ addTodo }: FormProps) {
       addTodo(inputValue.trim(), new Date(deadlineValue));
       setInputValue("");
       setDeadlineValue("");
+    } else {
+      alert("Task cannot be empty!");
     }
   };
 

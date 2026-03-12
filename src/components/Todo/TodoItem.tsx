@@ -18,20 +18,25 @@ export default function TodoItem({
   deleteTodo: DeleteProps;
   editTodo: EditProps;
 }) {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const [isEditingDeadline, setIsEditingDeadline] = useState(false);
   const [draftTitle, setDraftTitle] = useState(todo.title);
   const [draftDeadline, setDraftDeadline] = useState(
     todo.deadline.toLocaleString(),
   );
 
-  const handleSave = () => {
+  const handleTitleSave = () => {
     if (draftTitle.trim()) {
       editTodo(todo.id, draftTitle, todo.deadline);
     }
+    setIsEditingTitle(false);
+  };
+
+  const handleDeadlineSave = () => {
     if (draftDeadline) {
       editTodo(todo.id, todo.title, todo.deadline);
     }
-    setIsEditing(false);
+    setIsEditingDeadline(false);
   };
 
   return (
@@ -45,20 +50,20 @@ export default function TodoItem({
         />
 
         <div>
-          {isEditing ? (
+          {isEditingTitle ? (
             <input
               type="text"
               value={draftTitle}
               onChange={(e) => setDraftTitle(e.target.value)}
-              onBlur={() => handleSave}
+              onBlur={() => handleTitleSave}
               onKeyDown={(e) => {
-                if (e.key === "Enter") handleSave();
-                if (e.key === "Escape") setIsEditing(false);
+                if (e.key === "Enter") handleTitleSave();
+                if (e.key === "Escape") setIsEditingTitle(false);
               }}
             />
           ) : (
             <p
-              onDoubleClick={() => setIsEditing(true)}
+              onDoubleClick={() => setIsEditingTitle(true)}
               className={
                 todo.completed ? "line-through text-gray-400" : "text-slate-800"
               }
@@ -71,21 +76,21 @@ export default function TodoItem({
             {todo.addedAt.toLocaleString()}
           </p>
           <div>
-            {isEditing ? (
+            {isEditingDeadline ? (
               <input
                 type="datetime-local"
                 value={draftDeadline}
                 onChange={(e) => setDraftDeadline(e.target.value)}
-                onBlur={() => handleSave}
+                onBlur={() => handleDeadlineSave()}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") handleSave();
-                  if (e.key === "Escape") setIsEditing(false);
+                  if (e.key === "Enter") handleDeadlineSave();
+                  if (e.key === "Escape") setIsEditingDeadline(false);
                 }}
               />
             ) : (
               <p
                 className="text-sm text-slate-500"
-                onDoubleClick={() => setIsEditing(true)}
+                onDoubleClick={() => setIsEditingDeadline(true)}
               >
                 Due:{" "}
                 {todo.deadline ? todo.deadline.toLocaleString() : "No deadline"}
