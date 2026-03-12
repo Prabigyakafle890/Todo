@@ -5,7 +5,6 @@ import type { TodoItem } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 import DisplayTime from "./components/Todo/DisplayTime";
 import DisplayTodo from "./components/Todo/DisplayTodo";
-import CompletedTodos from "./components/Todo/DoneTodos";
 
 function getRand() {
   return new Date().getTime().toString() + Math.floor(Math.random() * 1000000);
@@ -25,6 +24,10 @@ function App() {
       },
     ]);
   };
+
+  const total_todos = todos.length;
+  const completed = todos.filter((todo) => todo.completed);
+  const completed_todos = completed.length;
 
   const toggleTodo = (id: string) => {
     const updatedTodos = todos.map((todo) => {
@@ -59,7 +62,13 @@ function App() {
       <div className="w-full max-w-xl px-4">
         <Header />
         <DisplayTime />
-        <CompletedTodos todos={todos} />
+
+        <div className="text-center mb-6">
+          <h2 className="text-lg text-slate-600 font-medium">
+            {completed_todos}/ {total_todos} completed
+          </h2>
+        </div>
+
         <AddTodoForm addTodo={addTodo} />
         <DisplayTodo
           todos={todos}
