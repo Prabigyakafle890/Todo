@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import Header from "./components/ui/Header";
 import AddTodoForm from "./components/Todo/AddTodoForm";
-import type { TodoItem } from "./types";
+import type { TodoTask } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 import DisplayTime from "./components/Todo/DisplayTime";
-import DisplayTodo from "./components/Todo/DisplayTodo";
+import DisplayTodos from "./components/Todo/DisplayTodos";
 
 function getRand() {
   return new Date().getTime().toString() + Math.floor(Math.random() * 1000000);
 }
 function App() {
-  const [todos, setTodos] = useState<TodoItem[]>(() => getTodos());
-
+  const [todos, setTodos] = useState<TodoTask[]>(() => getTodos());
   const addTodo = (title: string, deadline: Date) => {
     setTodos([
       ...todos,
@@ -24,10 +23,6 @@ function App() {
       },
     ]);
   };
-
-  const total_todos = todos.length;
-  const completed = todos.filter((todo) => todo.completed);
-  const completed_todos = completed.length;
 
   const toggleTodo = (id: string) => {
     const updatedTodos = todos.map((todo) => {
@@ -62,15 +57,8 @@ function App() {
       <div className="w-full max-w-xl px-4">
         <Header />
         <DisplayTime />
-
-        <div className="text-center mb-6">
-          <h2 className="text-lg text-slate-600 font-medium">
-            {completed_todos}/ {total_todos} completed
-          </h2>
-        </div>
-
         <AddTodoForm addTodo={addTodo} />
-        <DisplayTodo
+        <DisplayTodos
           todos={todos}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
