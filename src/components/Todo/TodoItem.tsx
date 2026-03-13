@@ -4,7 +4,7 @@ import type {
   DeleteProps,
   EditProps,
 } from "../../types";
-import { Button } from "../ui/Button";
+import { Button } from "../ui";
 import { useState } from "react";
 
 export default function TodoItem({

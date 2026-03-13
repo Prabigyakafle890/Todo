@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Button } from "../ui/Button";
-import { Input } from "../ui/Input";
+import { Button, Input } from "../ui";
 
 type FormProps = {
   addTodo: (title: string, deadline: Date) => void;

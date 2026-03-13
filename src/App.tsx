@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "./components/ui/Header";
-import AddTodoForm from "./components/Todo/AddTodoForm";
+import { Header, AddTodoForm, DisplayTime, DisplayTodos } from "./components";
 import type { TodoTask } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
-import DisplayTime from "./components/Todo/DisplayTime";
-import DisplayTodos from "./components/Todo/DisplayTodos";
 
 function getRand() {
   return new Date().getTime().toString() + Math.floor(Math.random() * 1000000);
