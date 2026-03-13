@@ -16,13 +16,15 @@ export default function AddTodoForm({ addTodo }: FormProps) {
   const [deadlineValue, setDeadlineValue] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
 
+  const MAX_LENGTH = 100;
+
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newErrors: FormErrors = {};
     if (!inputValue.trim()) {
       newErrors.title = "Title is required.";
     }
-    if (inputValue.trim().length > 100) {
+    if (inputValue.trim().length > MAX_LENGTH) {
       newErrors.title = "Title cannot exceed 100 characters.";
     }
 
@@ -49,6 +51,7 @@ export default function AddTodoForm({ addTodo }: FormProps) {
           type="text"
           placeholder="Write your next task"
           value={inputValue}
+          maxLength={MAX_LENGTH}
           onChange={(e) => setInputValue(e.target.value)}
           onBlur={() => {
             if (errors.title) {
@@ -59,6 +62,9 @@ export default function AddTodoForm({ addTodo }: FormProps) {
         {errors.title ? (
           <p className="text-red-500 text-sm mt-1">{errors.title}</p>
         ) : null}
+        <p className="text-sm mt-1 text-gray-500">
+          {inputValue.length}/{MAX_LENGTH}
+        </p>
       </div>
       <div className="flex-1">
         <Input
