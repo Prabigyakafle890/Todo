@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { Header, AddTodoForm, DisplayTime, DisplayTodos } from "./components";
+import { Header } from "./components/ui/Header";
+import AddTodoForm from "./components/todo/AddTodoForm";
+import DisplayTodos from "./components/todo/DisplayTodos";
+import DisplayTime from "./components/todo/DisplayTime";
 import type { TodoTask } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 

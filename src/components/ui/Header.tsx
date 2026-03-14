@@ -1,4 +1,4 @@
-export default function Header() {
+export function Header() {
   return (
     <div className="text-center mb-8">
       <h1 className="text-4xl font-bold text-slate-800">My Tasks</h1>
