@@ -3,6 +3,7 @@ import { Header } from "./components/ui/Header";
 import AddTodoForm from "./components/todo/AddTodoForm";
 import DisplayTodos from "./components/todo/DisplayTodos";
 import DisplayTime from "./components/todo/DisplayTime";
+import FilterTodo from "./components/todo/FilterTodo";
 import type { TodoTask } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 
@@ -11,6 +12,11 @@ function getRand() {
 }
 function App() {
   const [todos, setTodos] = useState<TodoTask[]>(() => getTodos());
+  const [filterRange, setFilterRange] = useState<{
+    start: Date;
+    end: Date;
+  } | null>(null);
+
   const addTodo = (title: string, deadline: Date) => {
     setTodos([
       ...todos,
@@ -48,6 +54,23 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const filteredTodo = (startDate: Date, endDate: Date) => {
+    setFilterRange({ start: startDate, end: endDate });
+  };
+
+  let todosToDisplay;
+  if (filterRange) {
+    todosToDisplay = todos.filter((todo) => {
+      const start = new Date(filterRange.start);
+      start.setHours(0, 0, 0, 0);
+      const end = new Date(filterRange.end);
+      end.setHours(23, 59, 59, 999);
+      return todo.deadline >= start && todo.deadline <= end;
+    });
+  } else {
+    todosToDisplay = todos;
+  }
+
   useEffect(() => {
     saveTodos(todos);
   }, [todos]);
@@ -58,8 +81,9 @@ function App() {
         <Header />
         <DisplayTime />
         <AddTodoForm addTodo={addTodo} />
+        <FilterTodo filteredTodo={filteredTodo} />
         <DisplayTodos
-          todos={todos}
+          todos={todosToDisplay}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
           editTodo={editTodo}
