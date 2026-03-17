@@ -4,6 +4,7 @@ import type {
   DeleteProps,
   EditProps,
 } from "../../types";
+import DatePicker from "react-datepicker";
 import { Button } from "../ui";
 import { useState } from "react";
 
@@ -21,8 +22,8 @@ export default function TodoItem({
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingDeadline, setIsEditingDeadline] = useState(false);
   const [draftTitle, setDraftTitle] = useState(todo.title);
-  const [draftDeadline, setDraftDeadline] = useState(
-    todo.deadline.toLocaleString(),
+  const [draftDeadline, setDraftDeadline] = useState<Date | null>(
+    todo.deadline,
   );
 
   const handleTitleSave = () => {
@@ -34,8 +35,13 @@ export default function TodoItem({
 
   const handleDeadlineSave = () => {
     if (draftDeadline) {
-      editTodo(todo.id, todo.title, todo.deadline);
+      editTodo(todo.id, todo.title, draftDeadline);
     }
+    setIsEditingDeadline(false);
+  };
+
+  const handleDeadlineCancel = () => {
+    setDraftDeadline(todo.deadline);
     setIsEditingDeadline(false);
   };
 
@@ -77,16 +83,34 @@ export default function TodoItem({
           </p>
           <div>
             {isEditingDeadline ? (
-              <input
-                type="datetime-local"
-                value={draftDeadline}
-                onChange={(e) => setDraftDeadline(e.target.value)}
-                onBlur={() => handleDeadlineSave()}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") handleDeadlineSave();
-                  if (e.key === "Escape") setIsEditingDeadline(false);
-                }}
-              />
+              <div className="mt-2 flex flex-col gap-2">
+                <DatePicker
+                  selected={draftDeadline}
+                  onChange={(date: Date | null) => setDraftDeadline(date)}
+                  showTimeSelect
+                  timeIntervals={15}
+                  minDate={new Date()}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  wrapperClassName="w-full"
+                />
+                <div className="flex gap-2">
+                  <Button
+                    type="button"
+                    onClick={handleDeadlineSave}
+                    className="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700"
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={handleDeadlineCancel}
+                    className="bg-slate-200 text-slate-700 px-3 py-2 rounded-lg hover:bg-slate-300"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </div>
             ) : (
               <p
                 className="text-sm text-slate-500"

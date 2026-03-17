@@ -80,8 +80,10 @@ function App() {
       <div className="w-full max-w-xl px-4">
         <Header />
         <DisplayTime />
-        <AddTodoForm addTodo={addTodo} />
-        <FilterTodo filteredTodo={filteredTodo} />
+        <AddTodoForm
+          addTodo={addTodo}
+          filterControl={<FilterTodo filteredTodo={filteredTodo} />}
+        />
         <DisplayTodos
           todos={todosToDisplay}
           toggleTodo={toggleTodo}
