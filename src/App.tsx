@@ -76,8 +76,10 @@ function App() {
   }, [todos]);
 
   return (
-    <div className="min-h-screen bg-slate-100 flex justify-center py-10">
-      <div className="w-full max-w-xl px-4">
+    <div className="relative min-h-screen overflow-hidden px-4 py-8 sm:px-6 sm:py-12">
+      <div className="absolute -left-17.5 -top-20 h-52 w-52 rounded-full bg-orange-200/45 blur-3xl" />
+      <div className="absolute -bottom-22.5 -right-15 h-64 w-64 rounded-full bg-teal-200/50 blur-3xl" />
+      <div className="relative mx-auto w-full max-w-3xl rounded-3xl border border-white/70 bg-white/55 p-5 shadow-[0_20px_70px_rgba(15,23,42,0.15)] backdrop-blur-xl sm:p-8">
         <Header />
         <DisplayTime />
         <AddTodoForm

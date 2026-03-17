@@ -19,7 +19,10 @@ export default function DisplayTodos({
 }) {
   if (todos.length === 0) {
     return (
-      <p className="text-center text-slate-500 mt-6">Nothing to do yet!</p>
+      <div className="mt-6 rounded-2xl border border-dashed border-slate-300/90 bg-white/50 p-8 text-center text-slate-500">
+        <p className="text-base font-medium">Nothing to do yet.</p>
+        <p className="mt-1 text-sm">Add a task and build momentum.</p>
+      </div>
     );
   }
   const totalTodos = todos.length;
@@ -28,9 +31,9 @@ export default function DisplayTodos({
 
   return (
     <div>
-      <div className="text-center mb-6">
-        <h2 className="text-lg text-slate-600 font-medium">
-          {completedTodos}/ {totalTodos} completed
+      <div className="mb-5 rounded-2xl border border-white/70 bg-white/65 p-3 text-center shadow-sm sm:mb-6">
+        <h2 className="text-sm font-semibold tracking-wide text-slate-600">
+          {completedTodos}/{totalTodos} completed
         </h2>
       </div>
       <ul className="space-y-3">

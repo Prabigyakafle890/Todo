@@ -33,7 +33,7 @@ export default function FilterTodo({
       <button
         type="button"
         onClick={() => setIsPickerOpen((prev) => !prev)}
-        className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-700 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
+        className="inline-flex h-11.5 items-center gap-2 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 text-slate-700 shadow-sm transition hover:border-teal-300 hover:bg-teal-50/40"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ export default function FilterTodo({
       </button>
 
       {isPickerOpen ? (
-        <div className="mt-3 overflow-auto rounded-xl border border-slate-200 bg-white p-2 shadow-md">
+        <div className="absolute right-0 z-20 mt-3 overflow-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-xl sm:right-auto">
           <DateRangePicker
             ranges={[selectionRange]}
             onChange={handleSelect}

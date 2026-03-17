@@ -2,12 +2,12 @@ import type { ButtonHTMLAttributes } from "react";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function Button({ children, ...props }: ButtonProps) {
+export function Button({ children, className = "", ...props }: ButtonProps) {
+  const baseClassName =
+    "inline-flex items-center justify-center rounded-xl bg-teal-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-teal-800 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+
   return (
-    <button
-      className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
-      {...props}
-    >
+    <button className={`${baseClassName} ${className}`.trim()} {...props}>
       {children}
     </button>
   );
