@@ -47,6 +47,10 @@ h3 {
 	overflow: hidden;
 }
 
+.todo-deadline-popper {
+	z-index: 80;
+}
+
 .rdrDefinedRangesWrapper {
 	display: none;
 }

@@ -46,7 +46,9 @@ export default function TodoItem({
   };
 
   return (
-    <li className="flex items-start justify-between gap-4 rounded-2xl border border-white/80 bg-white/75 p-4 shadow-sm backdrop-blur-sm transition hover:shadow-md">
+    <li
+      className={`relative flex items-start justify-between gap-4 rounded-2xl border border-white/80 bg-white/75 p-4 shadow-sm backdrop-blur-sm transition hover:shadow-md ${isEditingDeadline ? "z-20" : "z-0"}`}
+    >
       <div className="flex min-w-0 items-start gap-3">
         <input
           type="checkbox"
@@ -95,6 +97,7 @@ export default function TodoItem({
                   dateFormat="MMMM d, yyyy h:mm aa"
                   className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 shadow-sm transition focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-200"
                   wrapperClassName="w-full"
+                  popperClassName="todo-deadline-popper"
                 />
                 <div className="flex gap-2">
                   <Button type="button" onClick={handleDeadlineSave}>
