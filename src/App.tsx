@@ -59,6 +59,10 @@ function App() {
     setFilterRange({ start: startDate, end: endDate });
   };
 
+  const clearDeadlineFilter = () => {
+    setFilterRange(null);
+  };
+
   let todosToDisplay;
   if (filterRange) {
     todosToDisplay = todos.filter((todo) => {
@@ -92,9 +96,13 @@ function App() {
         <DisplayTime />
         <AddTodoForm
           addTodo={addTodo}
-          onSearchChange={setSearchTerm}
-          initialSearchValue={searchTerm}
-          filterControl={<FilterTodo filteredTodo={filteredTodo} />}
+          filterControl={
+            <FilterTodo
+              filteredTodo={filteredTodo}
+              clearDeadlineFilter={clearDeadlineFilter}
+              onTitleSearchChange={setSearchTerm}
+            />
+          }
         />
         <DisplayTodos
           todos={todosToDisplay}

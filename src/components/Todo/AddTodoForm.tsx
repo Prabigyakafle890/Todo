@@ -4,8 +4,6 @@ import { Button, Input } from "../ui";
 
 type FormProps = {
   addTodo: (title: string, deadline: Date) => void;
-  onSearchChange?: (value: string) => void;
-  initialSearchValue?: string;
   filterControl?: ReactNode;
 };
 
@@ -14,23 +12,12 @@ type FormErrors = {
   deadline?: string;
 };
 
-export default function AddTodoForm({
-  addTodo,
-  onSearchChange,
-  initialSearchValue = "",
-  filterControl,
-}: FormProps) {
+export default function AddTodoForm({ addTodo, filterControl }: FormProps) {
   const [inputValue, setInputValue] = useState("");
   const [deadlineValue, setDeadlineValue] = useState<Date | null>(null);
-  const [searchValue, setSearchValue] = useState(initialSearchValue);
   const [errors, setErrors] = useState<FormErrors>({});
 
   const MAX_LENGTH = 100;
-
-  const handleSearchChange = (value: string) => {
-    setSearchValue(value);
-    onSearchChange?.(value);
-  };
 
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -68,22 +55,6 @@ export default function AddTodoForm({
       onSubmit={handleSubmit}
       className="mb-7 grid gap-3 rounded-2xl border border-white/80 bg-white/70 p-4 shadow-sm sm:mb-8 sm:grid-cols-[1.3fr_1fr_auto_auto]"
     >
-      <div className="sm:col-span-4">
-        <label
-          htmlFor="todo-search"
-          className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500"
-        >
-          Search Todo
-        </label>
-        <Input
-          id="todo-search"
-          type="text"
-          value={searchValue}
-          onChange={(e) => handleSearchChange(e.target.value)}
-          placeholder="Search by title"
-          aria-label="Search todo by title"
-        />
-      </div>
       <div>
         <Input
           type="text"
