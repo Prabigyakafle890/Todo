@@ -16,6 +16,7 @@ function App() {
     start: Date;
     end: Date;
   } | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const addTodo = (title: string, deadline: Date) => {
     setTodos([
@@ -71,6 +72,13 @@ function App() {
     todosToDisplay = todos;
   }
 
+  const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+  if (normalizedSearchTerm) {
+    todosToDisplay = todosToDisplay.filter((todo) =>
+      todo.title.toLowerCase().includes(normalizedSearchTerm),
+    );
+  }
+
   useEffect(() => {
     saveTodos(todos);
   }, [todos]);
@@ -84,6 +92,8 @@ function App() {
         <DisplayTime />
         <AddTodoForm
           addTodo={addTodo}
+          onSearchChange={setSearchTerm}
+          initialSearchValue={searchTerm}
           filterControl={<FilterTodo filteredTodo={filteredTodo} />}
         />
         <DisplayTodos
