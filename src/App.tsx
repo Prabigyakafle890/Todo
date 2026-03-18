@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Header } from "./components/ui/Header";
-import AddTodoForm from "./components/todo/AddTodoForm";
-import DisplayTodos from "./components/todo/DisplayTodos";
-import DisplayTime from "./components/todo/DisplayTime";
-import FilterTodo from "./components/todo/FilterTodo";
+import AddTodoForm from "./components/Todo/AddTodoForm";
+import DisplayTodos from "./components/Todo/DisplayTodos";
+import DisplayTime from "./components/Todo/DisplayTime";
+import FilterTodo from "./components/Todo/FilterTodo";
 import type { TodoTask } from "./types";
 import { getTodos, saveTodos } from "./utils/storage";
 
