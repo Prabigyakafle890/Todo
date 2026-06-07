@@ -47,7 +47,7 @@ export default function TodoItem({
 
   return (
     <li
-      className={`relative flex items-start justify-between gap-4 rounded-2xl border border-white/80 bg-white/75 p-4 shadow-sm backdrop-blur-sm transition hover:shadow-md ${isEditingDeadline ? "z-20" : "z-0"}`}
+      className={`relative flex flex-col items-stretch justify-between gap-4 rounded-2xl border border-white/80 bg-white/75 p-4 shadow-sm backdrop-blur-sm transition hover:shadow-md sm:flex-row sm:items-start ${isEditingDeadline ? "z-20" : "z-0"}`}
     >
       <div className="flex min-w-0 items-start gap-3">
         <input
@@ -74,8 +74,8 @@ export default function TodoItem({
               onDoubleClick={() => setIsEditingTitle(true)}
               className={
                 todo.completed
-                  ? "cursor-pointer text-base text-slate-400 line-through"
-                  : "cursor-pointer text-base font-medium text-slate-800"
+                  ? "cursor-pointer [overflow-wrap:anywhere] text-base text-slate-400 line-through"
+                  : "cursor-pointer [overflow-wrap:anywhere] text-base font-medium text-slate-800"
               }
             >
               {todo.title}
@@ -127,7 +127,7 @@ export default function TodoItem({
 
       <Button
         onClick={() => deleteTodo(todo.id)}
-        className="shrink-0 bg-transparent px-2 py-1 text-sm font-semibold text-rose-600 shadow-none hover:bg-rose-50 hover:text-rose-700"
+        className="w-full shrink-0 bg-transparent px-2 py-2 text-sm font-semibold text-rose-600 shadow-none hover:bg-rose-50 hover:text-rose-700 sm:w-auto sm:py-1"
       >
         Delete
       </Button>
