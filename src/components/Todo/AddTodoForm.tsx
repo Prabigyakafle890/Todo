@@ -53,7 +53,7 @@ export default function AddTodoForm({ addTodo, filterControl }: FormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-7 grid gap-3 rounded-2xl border border-white/80 bg-white/70 p-4 shadow-sm sm:mb-8 sm:grid-cols-[1.3fr_1fr_auto_auto]"
+      className="mb-7 grid gap-3 rounded-2xl border border-white/80 bg-white/70 p-3 shadow-sm sm:mb-8 sm:grid-cols-[1.3fr_1fr_auto_auto] sm:p-4"
     >
       <div>
         <Input
