@@ -60,7 +60,8 @@ export default function FilterTodo({
       <button
         type="button"
         onClick={() => setIsPickerOpen((prev) => !prev)}
-        className="inline-flex h-11.5 items-center gap-2 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 text-slate-700 shadow-sm transition hover:border-teal-300 hover:bg-teal-50/40"
+        className="inline-flex h-11.5 w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 text-slate-700 shadow-sm transition hover:border-teal-300 hover:bg-teal-50/40 sm:w-auto"
+        aria-label="Open todo search and filter"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +78,7 @@ export default function FilterTodo({
       </button>
 
       {isPickerOpen ? (
-        <div className="absolute right-0 z-20 mt-3 w-90 max-w-[90vw] rounded-2xl border border-slate-200 bg-white p-3 shadow-xl sm:right-auto">
+        <div className="fixed inset-x-3 top-28 z-20 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl sm:absolute sm:inset-auto sm:right-auto sm:mt-3 sm:w-90 sm:max-w-[90vw]">
           <div className="mb-3 grid grid-cols-2 gap-2">
             <button
               type="button"
